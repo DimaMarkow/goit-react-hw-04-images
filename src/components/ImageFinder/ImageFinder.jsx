@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -7,32 +7,26 @@ import ImageGallery from 'components/ImageFinder/ImageGallery/ImageGallery';
 
 import css from 'components/ImageFinder/imagefinder.module.css';
 
-class ImageFinder extends React.Component {
-  state = {
-    filter: '',
-  };
+const ImageFinder = () => {
+  const [filter, setFilter] = useState('');
 
-  formSubmitHandler = data => {
+  const formSubmitHandler = data => {
     const normalizedFilter = data.toLowerCase();
-    this.setState({ filter: normalizedFilter });
+    setFilter(normalizedFilter);
   };
 
-  render() {
-    return (
-      <div className={css.app}>
-        <Searchbar onSubmit={this.formSubmitHandler} />
-        <ImageGallery filter={this.state.filter} />
+  return (
+    <div className={css.app}>
+      <Searchbar onSubmit={formSubmitHandler} />
+      <ImageGallery filter={filter} />
 
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          style={{ fontSize: 15 }}
-        />
-      </div>
-    );
-  }
-}
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        style={{ fontSize: 15 }}
+      />
+    </div>
+  );
+};
 
 export default ImageFinder;
-
-// 31955836-4f23a30b6c1dc45c2c659779e

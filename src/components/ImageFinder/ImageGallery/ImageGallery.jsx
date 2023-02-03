@@ -29,7 +29,6 @@ const ImageGallery = ({ filter }) => {
     setLoading(true);
     searchPosts(query, page)
       .then(data => {
-        console.log(data);
         setImages(prevImages => [...prevImages, ...data.hits]);
       })
       .catch(error => {
