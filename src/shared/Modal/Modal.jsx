@@ -11,7 +11,7 @@ const Modal = ({ imageDetail, closeModal }) => {
     return () => {
       document.removeEventListener('keydown', closeModalOnClick);
     };
-  }, []);
+  });
 
   const closeModalOnClick = ({ target, currentTarget, code }) => {
     if (target === currentTarget || code === 'Escape') {
